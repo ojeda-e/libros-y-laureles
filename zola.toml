@@ -1,5 +1,5 @@
-# The URL the site will be built for
-base_url = "https://example.com"
+# Public URL when deployed (GitHub Pages project site: /repo-name/)
+base_url = "https://ojeda-e.github.io/libros-y-laureles"
 
 theme = "daisy"
 
@@ -7,7 +7,6 @@ title = "Libros y Laureles"
 description = "Libros y Laureles"
 
 default_language = "es"
-
 compile_sass = false
 build_search_index = true
 generate_feeds = true
