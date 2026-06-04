@@ -1,0 +1,19 @@
+/*
+ * Daisy theme sets strong/em to accent color (themes/daisy/src/css/main.css).
+ * Use normal body text color instead: dark in light mode, white in dark mode.
+ */
+main :is(strong, em) {
+    color: var(--color-base-content);
+}
+
+/* Halloween: custom palette */
+[data-theme="halloween"] {
+    /* --color-base-100: #333333; */
+    --color-base-200: #3d3d3d;
+    --color-base-300: #4a4a4a;
+    --color-primary: #f37433;
+    --color-primary-content: #ffffff;
+    --color-secondary: #65713f;
+    --color-secondary-content: #ffffff;
+}
+

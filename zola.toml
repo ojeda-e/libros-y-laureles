@@ -1,0 +1,52 @@
+# The URL the site will be built for
+base_url = "https://example.com"
+
+theme = "daisy"
+
+title = "Libros y Laureles"
+description = "Libros y Laureles"
+
+default_language = "es"
+
+compile_sass = false
+build_search_index = true
+generate_feeds = true
+
+taxonomies = [
+    { name = "tags", paginate_by = 2, feed = true },
+    { name = "directors", paginate_by = 2, feed = true },
+]
+
+[search]
+index_format = "elasticlunr_json"
+
+[extra]
+enable_theme_switching = true
+daisyui_theme_light = "lemonade"
+daisyui_theme_dark = "halloween"
+# Shown in the navbar theme dropdown (replaces the theme's full list)
+themes = [
+    { identifier = "nord", name = "Light" },
+    { identifier = "halloween", name = "Dark" },
+]
+
+[extra.navbar]
+links = [
+    # { url = "blog", i18n_key = "posts" },
+    { url = "books", i18n_key = "books" },
+    { url = "tags", i18n_key = "tags" },
+    { url = "about", i18n_key = "about" },
+]
+
+[extra.footer]
+notice = "Libros y Laureles is a work entirely made by Laura Corredor and Mia Ojeda."
+
+[languages.en]
+title = "Books and Laurels"
+description = "Books and Laurels"
+build_search_index = true
+generate_feeds = true
+taxonomies = [
+    { name = "tags", paginate_by = 2, feed = true },
+    { name = "directors", paginate_by = 2, feed = true },
+]

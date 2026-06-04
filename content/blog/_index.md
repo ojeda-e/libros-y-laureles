@@ -1,0 +1,8 @@
++++
+title = "Entradas"
+sort_by = "date"
+paginate_by = 5
+
+[extra]
+tags_taxonomy = "tags"
++++

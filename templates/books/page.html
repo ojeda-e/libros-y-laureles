@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block extra_headers %}
+{{ content::include_stylesheet(file="css/custom.css") }}
+{% endblock %}
+
+{% block content %}
+
+{% block breadcrumb %}
+<div class="breadcrumbs text-sm">
+    <ul>
+        <li><a href="{{ content::base_path() }}{% if lang != config.default_language%}{{ lang }}{% endif %}">Home</a></li>
+        {% set current = section | default(value=page) %}
+        {% for ancestor in current.ancestors %}
+        {% if loop.first %}
+        {% continue %}
+        {% endif %}
+        {% set section = get_section(path=ancestor) %}
+        <li><a class="breadcrumb-path" href="{{ section.permalink }}">{{ section.title }}</a></li>
+        {% endfor %}
+        <li><a class="breadcrumb-path active" href="{{ current.permalink }}">{{ current.title }}</a></li>
+    </ul>
+</div>
+{% endblock breadcrumb %}
+
+<h1>{{ page.title }}</h1>
+
+{% if page.description %}
+<p class="text-lg opacity-80 mb-4">{{ page.description }}</p>
+{% endif %}
+
+{% if page.extra.thumbnail %}
+<figure class="mb-6">
+    <img src="{{ content::base_path() }}{{ page.extra.thumbnail | trim_start_matches(pat='/') }}" alt="{{ page.title }}" class="w-32 rounded-lg shadow-sm object-cover aspect-[2/3]" width="128" height="192">
+</figure>
+{% endif %}
+
+<div class="flex flex-col gap-2 mb-6 pl-1">
+    {% if page.extra.published_on %}
+    <span class="flex items-center">
+        {{ content::icon(id="calendar", icons=icons) }}
+        <span>{{ i18n_user.published | default(value=i18n.published) }}: {{ page.extra.published_on }}</span>
+    </span>
+    {% endif %}
+    {% if page.extra.isbn %}
+    <span class="flex items-center">
+        {{ content::icon(id="pencil", icons=icons) }}
+        <span>{{ i18n_user.isbn | default(value=i18n.isbn) }}: {{ page.extra.isbn }}</span>
+    </span>
+    {% endif %}
+    {% if page.taxonomies | length > 0 %}
+    {% for taxonomy, elements in page.taxonomies %}
+    {% for element in elements %}
+    <span class="flex items-center">
+        {{ content::icon(id="tag", icons=icons) }}
+        <a href="{{ get_taxonomy_url(kind=taxonomy, name=element, lang=lang) }}" class="no-underline hover:underline">{{ content::translate(value=element, i18n=i18n, i18n_user=i18n_user) }}</a>
+    </span>
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+    {% if page.date %}
+    <span class="flex items-center">
+        {{ content::icon(id="clock", icons=icons) }}
+        <span>{{ i18n_user.added | default(value=i18n.added) }}: <time datetime="{{ page.date }}">{{ page.date | date(format=i18n_user['language_date_format'] | default(value=i18n['language_date_format']), locale=i18n_user['language_locale'] | default(value=i18n['language_locale'])) }}</time></span>
+    </span>
+    {% endif %}
+</div>
+
+{% block page_content %}
+{{ page.content | safe }}
+{% endblock %}
+
+{% block page_footer %}
+{% endblock %}
+
+{% endblock %}

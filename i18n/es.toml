@@ -1,0 +1,16 @@
+# Navbar (overrides theme defaults)
+posts = "Entradas"
+tags = "Etiquetas"
+books = "Libros"    
+about = "Sobre nosotras"
+
+# Book metadata
+published = "Fecha de publicación"
+isbn = "ISBN"
+added = "Añadido"
+
+# Tag labels (slug matches taxonomy term)
+ejemplo = "Ejemplo"
+otro_ejemplo = "Otro ejemplo"
+literatura_latinoamericana = "Literatura latinoamericana"
+latinamerican_literature = "Literatura latinoamericana"

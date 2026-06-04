@@ -1,0 +1,16 @@
+# Navbar
+posts = "Posts"
+tags = "Tags"
+books = "Books"
+about = "About us"
+
+# Book metadata
+published = "Publication date"
+isbn = "ISBN"
+added = "Added"
+
+# Tag labels
+ejemplo = "Example"
+otro_ejemplo = "Other example"
+literatura_latinoamericana = "Latin American literature"
+latinamerican_literature = "Latin American literature"
