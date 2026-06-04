@@ -1,4 +1,4 @@
 [submodule "themes/daisy"]
 	path = themes/daisy
-	url = https://github.com/awinterstein/zola-theme-daisy.git
+	url = https://github.com/ojeda-e/zola-theme-daisy.git
 	branch = main
