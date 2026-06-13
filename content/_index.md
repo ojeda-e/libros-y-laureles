@@ -8,4 +8,6 @@ Somos amigas y hemos estado leyendo libros juntas desde 2026. Cada mes, elegimos
 
 Las reseñas incluidas en este sitio web son nuestras propias opiniones, pensamientos o perspectivas, y no necesariamente las opiniones de los autores o editores. **Te animamos a leer el libro y formar tu propia opinión.** 
 
-También publicaremos el próximo libro que vamos a leer en nuestro club de libros!
+{% callout() %}
+Siempre publicamos el próximo libro que vamos a leer en nuestro club de libros! Revisa la sección [leyendo ahora](@/leyendo-ahora/_index.md) para ver qué libro estamos leyendo.
+{% end %}

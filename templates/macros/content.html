@@ -6,87 +6,101 @@
 {{- base_without_domain ~ '/' | safe -}}
 {%- endmacro -%}
 
-
-{%- macro include_script(file, additional_tags="") -%}
-    <script src="{{ content::base_path() }}{{ file | safe }}?{{ get_hash(path=file, base64=true) | truncate(length=6, end="")}}"{% if config.mode=="build" %} integrity="sha384-{{ get_hash(path=file, sha_type=384, base64=true) | safe }}"{% endif %} {{ additional_tags | safe }}></script>
+{%- macro asset_url(file) -%}
+{{ content::base_path() }}{{ file | safe }}?{{ get_hash(path=file, base64=true) | truncate(length=6, end="") }}
 {%- endmacro -%}
 
+{%- macro asset_integrity(file) -%}
+{%- if config.mode == "build" %} integrity="sha384-{{ get_hash(path=file, sha_type=384, base64=true) | safe }}"{% endif -%}
+{%- endmacro -%}
+
+{%- macro include_script(file, additional_tags="") -%}
+<script src="{{ content::asset_url(file=file) }}"{{ content::asset_integrity(file=file) }} {{ additional_tags | safe }}></script>
+{%- endmacro -%}
 
 {%- macro include_stylesheet(file) -%}
-    <link rel="stylesheet" href="{{ content::base_path() }}{{ file | safe }}?{{ get_hash(path=file, base64=true) | truncate(length=6, end="")}}"{% if config.mode=="build" %} integrity="sha384-{{ get_hash(path=file, sha_type=384, base64=true) | safe }}"{% endif %}>
+<link rel="stylesheet" href="{{ content::asset_url(file=file) }}"{{ content::asset_integrity(file=file) }}>
 {%- endmacro -%}
 
 {%- macro include_manifest(file) -%}
-    <link rel="manifest" href="{{ content::base_path() }}{{ file | safe }}?{{ get_hash(path=file, base64=true) | truncate(length=6, end="")}}"{% if config.mode=="build" %} integrity="sha384-{{ get_hash(path=file, sha_type=384, base64=true) | safe }}"{% endif %}>
+<link rel="manifest" href="{{ content::asset_url(file=file) }}"{{ content::asset_integrity(file=file) }}>
 {%- endmacro -%}
 
 {%- macro icon(id, class="", label="", icons="") -%}
 {%- if icons == "" -%}
-{#- Load icons from the root directory (preferred site directory, fallback theme directory) -#}
 {%- set icons = load_data(path="icons.toml", required=false) -%}
 {%- if not icons -%}{%- set icons = load_data(path="themes/daisy/icons.toml", required=true) -%}{%- endif -%}
 {%- endif -%}
 <svg role="img" aria-label="{% if label != '' %}{{ label }}{% else %}{{ id | title }}{% endif %}" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block h-4 w-4 mr-2 {{ class }}" viewBox="0 0 16 16">{{ icons[id] | safe }}</svg>
 {%- endmacro -%}
 
+{%- macro nav_path(entry) -%}
+{%- if lang == config.default_language -%}
+{{- entry.url -}}
+{%- elif entry.url_en -%}
+{{- entry.url_en -}}
+{%- else -%}
+{{- lang ~ '/' ~ entry.url -}}
+{%- endif -%}
+{%- endmacro -%}
 
-{% macro navbar_button(entry, text_class, i18n, i18n_user) %}
+{%- macro nav_href(entry) -%}
+{{ content::base_path() }}{{ content::nav_path(entry=entry) }}
+{%- endmacro -%}
+
+{%- macro nav_is_current(entry) -%}
+{%- if current_path is defined -%}
+{%- if lang == config.default_language -%}{%- set path = entry.url -%}
+{%- elif entry.url_en -%}{%- set path = entry.url_en -%}
+{%- else -%}{%- set path = lang ~ '/' ~ entry.url -%}
+{%- endif -%}
+{%- if path != "" and path in current_path -%}true
+{%- elif entry.url in current_path or (entry.url_en and entry.url_en in current_path) -%}true
+{%- elif path == "" and current_path | trim_end_matches(pat=lang ~ '/') | trim_end_matches(pat='/') == "" -%}true
+{%- endif -%}
+{%- endif -%}
+{%- endmacro -%}
+
+{% macro nav_button(entry, i18n, i18n_user, variant="navbar", text_class="") %}
 {% set text = i18n_user[entry.i18n_key] | default(value=i18n[entry.i18n_key]) | title %}
-{% if lang == config.default_language %}{% set language_url_part = '' %}{% else %}{% set language_url_part = lang ~ '/' %}{% endif %} {# Empty for default language and language for others. #}
-
-{% if current_path and ((entry.url !="" and entry.url in current_path) or (entry.url=="" and current_path | trim_end_matches(pat=lang ~'/') | trim_end_matches(pat='/' )=="" )) %}
-    {# Highlight button, if button URL is part of the current path. #}
-    {% set button_class = "bg-secondary text-secondary-content no-underline px-3 rounded-md" %}
-{% else %}
-    {% set button_class = "hover:bg-primary-content hover:text-primary no-underline px-3 rounded-md" %}
-{% endif %}
+{% set is_current = content::nav_is_current(entry=entry) == "true" %}
 
 {% if entry.submenu %}
+{% if variant == "navbar" %}
 <details name="Navbar Menu">
-    <summary class="{{ button_class }}">{{ text }}</summary>
+    <summary class="{% if is_current %}bg-secondary text-secondary-content{% else %}hover:bg-primary-content hover:text-primary{% endif %} no-underline px-3 rounded-md">{{ text }}</summary>
     <ul class="bg-primary text-primary-content z-1 w-52 p-2 rounded-none rounded-b-lg shadow-sm overflow-auto">
         {% for subentry in entry.submenu %}
-            <li>{{ content::navbar_button(entry=subentry, text_class=text_class, i18n=i18n, i18n_user=i18n_user) }}</li>
+        <li>{{ content::nav_button(entry=subentry, variant=variant, text_class=text_class, i18n=i18n, i18n_user=i18n_user) }}</li>
         {% endfor %}
     </ul>
 </details>
 {% else %}
-<a href="{{ content::base_path() }}{{ language_url_part }}{{ entry.url }}" class="{{ button_class }}">
-        <span class="{{ text_class }}">{{ text }}</span>
-</a>
-{% endif %}
-{% endmacro %}
-
-
-{% macro drawer_button(entry, i18n, i18n_user) %}
-{% set text = i18n_user[entry.i18n_key] | default(value=i18n[entry.i18n_key]) | title %}
-{%if lang == config.default_language %}{% set language_url_part = '' %}{% else %}{% set language_url_part = lang ~ '/' %}{% endif %} {# Empty for default language and language for others. #}
-
-{% if current_path and ((entry.url !="" and entry.url in current_path) or (entry.url=="" and current_path | trim_end_matches(pat=lang ~'/') | trim_end_matches(pat='/' )=="" )) %}
-    {# Highlight button, if button URL is part of the current path. #}
-    {% set selected = true %}
-{% else %}
-    {% set selected = false %}
-{% endif %}
-
-{% if entry.submenu %}
-<details{% if selected %} open{% endif %}>
+<details{% if is_current %} open{% endif %}>
     <summary class="link no-underline">{{ text }}</summary>
     <ul>
         {% for subentry in entry.submenu %}
-        <li>
-        {{ content::drawer_button(entry=subentry, i18n=i18n, i18n_user=i18n_user) }}
-        </li>
+        <li>{{ content::nav_button(entry=subentry, variant=variant, i18n=i18n, i18n_user=i18n_user) }}</li>
         {% endfor %}
     </ul>
 </details>
-{% else %}
-<a href="{{ content::base_path() }}{{ language_url_part }}{{ entry.url }}" class="link no-underline {% if selected %}menu-active{% endif %}">
-        {{ text }}
+{% endif %}
+{% elif variant == "navbar" %}
+<a href="{{ content::nav_href(entry=entry) }}" class="{% if is_current %}bg-secondary text-secondary-content{% else %}hover:bg-primary-content hover:text-primary{% endif %} no-underline px-3 rounded-md">
+    <span class="{{ text_class }}">{{ text }}</span>
 </a>
+{% else %}
+<a href="{{ content::nav_href(entry=entry) }}" class="link no-underline {% if is_current %}menu-active{% endif %}">{{ text }}</a>
 {% endif %}
 {% endmacro %}
 
+{% macro navbar_button(entry, text_class, i18n, i18n_user) %}
+{{ content::nav_button(entry=entry, variant="navbar", text_class=text_class, i18n=i18n, i18n_user=i18n_user) }}
+{% endmacro %}
+
+{% macro drawer_button(entry, i18n, i18n_user) %}
+{{ content::nav_button(entry=entry, variant="drawer", i18n=i18n, i18n_user=i18n_user) }}
+{% endmacro %}
 
 {% macro social_links(i18n, icons) %}
 {% if config.extra.social.codeberg %}
@@ -127,22 +141,45 @@
 {% endif %}
 {% endmacro %}
 
-
 {% macro book_meta(page, i18n, i18n_user, icons) %}
-    {% if page.extra.published_on %}
-    <span class="flex items-center whitespace-nowrap">
-        {{ content::icon(id="calendar", icons=icons) }}
-        <span>{{ i18n_user.published | default(value=i18n.published) }}: {{ page.extra.published_on }}</span>
-    </span>
-    {% endif %}
-    {% if page.extra.isbn %}
-    <span class="flex items-center whitespace-nowrap">
-        {{ content::icon(id="pencil", icons=icons) }}
-        <span>{{ i18n_user.isbn | default(value=i18n.isbn) }}: {{ page.extra.isbn }}</span>
-    </span>
-    {% endif %}
+{% if page.extra.published_on %}
+<span class="flex items-center whitespace-nowrap">
+    {{ content::icon(id="calendar", icons=icons) }}
+    <span>{{ i18n_user.published | default(value=i18n.published) }}: {{ page.extra.published_on }}</span>
+</span>
+{% endif %}
+{% if page.extra.isbn %}
+<span class="flex items-center whitespace-nowrap">
+    {{ content::icon(id="pencil", icons=icons) }}
+    <span>{{ i18n_user.isbn | default(value=i18n.isbn) }}: {{ page.extra.isbn }}</span>
+</span>
+{% endif %}
 {% endmacro %}
 
+{% macro card_thumbnail(page) %}
+{% if page.extra.thumbnail %}
+<figure class="mb-3 flex justify-center">
+    <a href="{{ page.permalink }}" class="no-underline">
+        <img src="{{ content::base_path() }}{{ page.extra.thumbnail | trim_start_matches(pat='/') }}" alt="{{ page.title }}" class="w-24 rounded-lg object-cover aspect-[2/3] shadow-sm" loading="lazy" width="96" height="144">
+    </a>
+</figure>
+{% endif %}
+{% endmacro %}
+
+{% macro card_taxonomies(page, i18n, i18n_user, icons, inline=false, wrapper=true) %}
+{% if page.taxonomies | length > 0 %}
+{% if wrapper %}<div class="{% if inline %}flex flex-wrap space-x-6{% else %}flex flex-col gap-2{% endif %} pl-1 mb-2">{% endif %}
+    {% for taxonomy, elements in page.taxonomies %}
+    {% for element in elements %}
+    <span class="flex items-center{% if inline %} whitespace-nowrap{% endif %}">
+        {{ content::icon(id="tag", icons=icons) }}
+        <a href="{{ get_taxonomy_url(kind=taxonomy, name=element, lang=lang) }}" class="no-underline hover:underline">{{ content::translate(value=element, i18n=i18n, i18n_user=i18n_user) }}</a>
+    </span>
+    {% endfor %}
+    {% endfor %}
+{% if wrapper %}</div>{% endif %}
+{% endif %}
+{% endmacro %}
 
 {% macro cards(pages, i18n, i18n_user, icons) %}
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -154,52 +191,23 @@
             </a>
 
             {% if page.extra.published_on %}
-            {# Books: title, author, cover, then publication date / ISBN / tags only #}
             {% if page.description %}
             <p class="opacity-80 mb-2">{{ page.description }}</p>
             {% endif %}
-
-            {% if page.extra.thumbnail %}
-            <figure class="mb-3 flex justify-center">
-                <a href="{{ page.permalink }}" class="no-underline">
-                    <img src="{{ content::base_path() }}{{ page.extra.thumbnail | trim_start_matches(pat='/') }}" alt="{{ page.title }}" class="w-24 rounded-lg object-cover aspect-[2/3] shadow-sm" loading="lazy" width="96" height="144">
-                </a>
-            </figure>
-            {% endif %}
-
+            {{ content::card_thumbnail(page=page) }}
             <div class="flex flex-col gap-2 pl-1 mb-2">
                 {{ content::book_meta(page=page, i18n=i18n, i18n_user=i18n_user, icons=icons) }}
-                {% if page.taxonomies | length > 0 %}
-                {% for taxonomy, elements in page.taxonomies %}
-                {% for element in elements %}
-                <span class="flex items-center">
-                    {{ content::icon(id="tag", icons=icons) }}
-                    <a href="{{ get_taxonomy_url(kind=taxonomy, name=element, lang=lang) }}" class="no-underline hover:underline">{{ content::translate(value=element, i18n=i18n, i18n_user=i18n_user) }}</a>
-                </span>
-                {% endfor %}
-                {% endfor %}
-                {% endif %}
+                {{ content::card_taxonomies(page=page, i18n=i18n, i18n_user=i18n_user, icons=icons, wrapper=false) }}
             </div>
-
             {% else %}
-            {# Blog and other sections #}
-            {% if page.extra.thumbnail %}
-            <figure class="mb-3 flex justify-center">
-                <a href="{{ page.permalink }}" class="no-underline">
-                    <img src="{{ content::base_path() }}{{ page.extra.thumbnail | trim_start_matches(pat='/') }}" alt="{{ page.title }}" class="w-24 rounded-lg object-cover aspect-[2/3] shadow-sm" loading="lazy" width="96" height="144">
-                </a>
-            </figure>
-            {% endif %}
-
+            {{ content::card_thumbnail(page=page) }}
             <div class="flex flex-wrap space-x-6 pl-1 mb-2">
                 {% if page.date %}
                 <span class="flex items-center whitespace-nowrap">
                     {{ content::icon(id="calendar", icons=icons) }}
-                    <span><time datetime="{{ page.date }}">{{ page.date | date(format=i18n_user['language_date_format'] | default(value=i18n['language_date_format']),
-                        locale=i18n_user['language_locale'] | default(value=i18n['language_locale'])) }}</time></span>
+                    <span><time datetime="{{ page.date }}">{{ page.date | date(format=i18n_user['language_date_format'] | default(value=i18n['language_date_format']), locale=i18n_user['language_locale'] | default(value=i18n['language_locale'])) }}</time></span>
                 </span>
                 {% endif %}
-
                 {% if page.authors %}
                 <span class="flex items-center whitespace-nowrap">
                     {% if page.authors | length == 1 %}{{ content::icon(id="person", icons=icons) }}{% else %}{{ content::icon(id="people", icons=icons) }}{% endif %}
@@ -207,21 +215,8 @@
                 </span>
                 {% endif %}
             </div>
-
             {% if page.summary %}{{ page.summary | safe }}{% else %}<p>{{ page.description }}</p>{% endif %}
-
-            {% if page.taxonomies | length > 0 %}
-            <div class="flex flex-wrap space-x-6 pl-1 mb-2">
-            {% for taxonomy, elements in page.taxonomies %}
-            {% for element in elements %}
-            <span class="flex items-center whitespace-nowrap">
-                {{ content::icon(id="tag", icons=icons) }}
-                <a href="{{ get_taxonomy_url(kind=taxonomy, name=element, lang=lang) }}" class="no-underline hover:underline">{{ content::translate(value=element, i18n=i18n, i18n_user=i18n_user) }}</a>
-            </span>
-            {% endfor %}
-            {% endfor %}
-            </div>
-            {% endif %}
+            {{ content::card_taxonomies(page=page, i18n=i18n, i18n_user=i18n_user, icons=icons, inline=true) }}
             {% endif %}
 
             <div class="card-actions justify-end">
@@ -233,18 +228,12 @@
 </div>
 {% endmacro %}
 
-
 {% macro term(term, show_count=true, icon_id="tag", i18n, i18n_user, icons) %}
 <span class="flex items-center whitespace-nowrap">
-    {{ content::icon(id=icon_id, icons=icons) }}<a href="{{ content::base_path() }}{{term.path | trim_start_matches(pat="/") }}" class="no-underline hover:underline">{{ content::translate(value=term.name, i18n=i18n, i18n_user=i18n_user) }}</a>{% if show_count %}<sup class="ml-1">{{ term.pages | length }}</sup>{% endif %}
+    {{ content::icon(id=icon_id, icons=icons) }}<a href="{{ content::base_path() }}{{ term.path | trim_start_matches(pat="/") }}" class="no-underline hover:underline">{{ content::translate(value=term.name, i18n=i18n, i18n_user=i18n_user) }}</a>{% if show_count %}<sup class="ml-1">{{ term.pages | length }}</sup>{% endif %}
 </span>
 {% endmacro %}
 
-
-{# Optionally translates a value, if it exists in the translation file for the current language. If it does not      #}
-{# exist, then just the given value is printed without translating. For being able to load the translation from the  #}
-{# language file, the given value is slugified (lowercase, no spaces etc.), but with all dashes being underscores.   #}
-{# This is needed, to match the variable format of the language files, which are defined in the TOML language.       #}
 {% macro translate(value, i18n, i18n_user) %}
 {%- set identifier = value | slugify | replace(from="-", to="_") -%}
 {%- if i18n_user[identifier] -%}
@@ -262,17 +251,14 @@
 </ul>
 {% endmacro %}
 
-{# Shows steps progess, for which it is needed to set the ordering to "weighted" for the section #}
 {% macro steps_progress(page, vertical=false) %}
 <ul class="steps {% if vertical %}steps-vertical{% endif %}">
     {{ content::steps_lower(page=page) }}
-    <li class="step step-secondary pl-4"><a href="{{page.permalink }}" class="font-bold no-underline hover:underline">{{ page.title }}</a></li>
+    <li class="step step-secondary pl-4"><a href="{{ page.permalink }}" class="font-bold no-underline hover:underline">{{ page.title }}</a></li>
     {{ content::steps_higher(page=page) }}
 </ul>
 {% endmacro %}
 
-
-{# Helper macro for recursively adding the steps elemets for all previous / lower pages #}
 {% macro steps_lower(page) %}
 {% if page.lower %}
 {{ content::steps_lower(page=get_page(path=page.lower.relative_path)) }}
@@ -280,8 +266,6 @@
 {% endif %}
 {% endmacro %}
 
-
-{# Helper macro for recursively adding the steps elemets for all following / higher pages #}
 {% macro steps_higher(page) %}
 {% if page.higher %}
 <li class="step pl-4"><a href="{{ page.higher.permalink }}" class="no-underline hover:underline">{{ page.higher.title }}</a></li>

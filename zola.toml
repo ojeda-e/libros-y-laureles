@@ -31,7 +31,7 @@ themes = [
 
 [extra.navbar]
 links = [
-    # { url = "blog", i18n_key = "posts" },
+    { url = "leyendo-ahora", url_en = "currently-reading", i18n_key = "currently_reading" },
     { url = "books", i18n_key = "books" },
     { url = "tags", i18n_key = "tags" },
     { url = "about", i18n_key = "about" },
@@ -47,5 +47,5 @@ build_search_index = true
 generate_feeds = true
 taxonomies = [
     { name = "tags", paginate_by = 2, feed = true },
-    { name = "directors", paginate_by = 2, feed = true },
+    { name = "country", paginate_by = 2, feed = true },
 ]

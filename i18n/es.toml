@@ -1,5 +1,5 @@
 # Navbar (overrides theme defaults)
-posts = "Entradas"
+currently_reading = "Leyendo ahora"
 tags = "Etiquetas"
 books = "Libros"    
 about = "Sobre nosotras"

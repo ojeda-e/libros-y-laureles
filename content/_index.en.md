@@ -9,4 +9,7 @@ We are friends who have had an ongoing book club running starting in 2026. Each 
 
 The reviews included in this website are our own opinions, thoughts or perspectives, and not necessarily the opinions of the authors or publishers. **We encourage you to read the book and form your own opinion.** 
 
-We’ll also post the next book coming up in book club!
+{% callout() %}
+We always post the next book coming up in book club! Check the [currently reading](@/currently-reading.en.md) section to see what we are reading next.
+{% end %}
+

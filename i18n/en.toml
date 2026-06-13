@@ -3,6 +3,7 @@ posts = "Posts"
 tags = "Tags"
 books = "Books"
 about = "About us"
+currently_reading = "Currently Reading"
 
 # Book metadata
 published = "Publication date"
