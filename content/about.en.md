@@ -7,7 +7,9 @@ Books and Laurels is a project by Laura Corredor and Mia Ojeda.
 
 Laura and Mia met during their undergraduate studies at Universidad Nacional de Colombia in Bogotá. They have been friends ever since, despite the distance and time that has separated them. They both love reading, traveling, and learning about new things.
 
-### About Laura
+### 🍂 About Laura
+
+Laura studied science and she is a translator by trade. After a season in Australia, she came back to Colombia to keep her dog company. She has been taking up on the reading habit again, thanks to this blog. Laura listens some metal, rock, alternative music, k-pop and the like. She likes to travel and to know new cultures. 
 
 ### 🌿 About Mia
 
