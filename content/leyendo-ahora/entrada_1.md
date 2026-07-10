@@ -1,22 +1,21 @@
 +++
-title = "Estrella Distante"
-description = "Roberto Bolaño"
+title = "Brave New World"
+description = "Aldous Huxley"
 date = 2026-05-18
-path = "leyendo-ahora/estrella-distante"
+path = "leyendo-ahora/brave-new-world"
 
 [extra]
-thumbnail = "assets/estrella-distante-roberto-bolanio.jpg"
-published_on = 2004
-isbn = "13: 978-0307476128"
+thumbnail = "assets/brave-new-world-aldous-huxley.jpeg"
+published_on = 1932
+isbn = "9780307356543"
 
 [taxonomies]
-tags = ["Latinoamérica"]
+tags = ["Science Fiction"]
 +++
 
 ## Por qué lo elegimos?
 
-Uno de los autores que siempre hemos querido leer es Roberto Bolaño. Durante una visita a [City Lights Bookstore](https://citylights.com/) (San Francisco), una de las librerías favoritas de Mía, encontramos una sección dedicada a su obra. No podíamos dejar pasar la oportunidad, así que elegimos Estrella Distante como el próximo libro.
+Brave New World (traducido al español como "Un Mundo Feliz") es un clásico. Aunque lo hemos leído antes en español, este es el tipo de libro que se debe leer en inglés porque el lenguaje es más poderoso. Dado el clima político actual a nivel mundial, es un buen momento para leer un libro que explora las consecuencias de una sociedad controlada por un gobierno que crea a sus ciudadanos para desarrollar una sociedad basada en la inteligencia.
 
 ## Acerca del autor
-Roberto Bolaño nació el 28 de abril de 1953, en Santiago, Chile. Fue una de las principales figuras literarias sudamericanas en el siglo XXI.
-Su libro _Detectives Salvajes_ fue publicado en 1998 y ganó el Premio Rómulo Gallegos (el equivalente en español del Premio Booker). Infortunadamente, su obra no fue traducida ampliamente a otros idiomas sino hasta 2014, cuando su trabajo comenzó a ganar reconocimiento internacional. Bolaño exploró varias formas de escritura, incluyendo cuentos, novelas y poesía. Influenciado por su traumatica experiencia durante la dictadura de Augusto Pinochet, abordó temas como el exilio, el fascismo, la violencia y la búsqueda de la verdad. Roberto Bolaño falleció el 15 de julio de 2003, en Barcelona, España.
+Aldous Huxley nació en 1894 en Inglaterra y fue un escritor y filósofo. Fue nominado para el Premio Nobel de Literatura nueve veces, y es probablemente mejor conocido por su libro **Un Mundo Feliz**. Considerado uno de los intelectuales más importantes del siglo XX, Aldous Huxley estuvo asociado con el Bloomsbury Group y fue amigo de Virginia Woolf. En su juventud enseñó francés en Eton College, teniendo a George Orwell como uno de sus estudiantes. Experimentó con mescalina en los 1950s, y se convirtió en asesor de trabajos de investigación con drogas psicodélicas en la Universidad de Harvard. También escribió sobre sus experiencias con mescalina en su libro "The Doors of Perception". Aldous Huxley falleció en 1963 en Los Angeles, California.

@@ -1,22 +1,22 @@
 +++
-title = "Distant Star"
-description = "Roberto Bolaño"
-date = 2026-06-06
-path = "currently-reading/distant-star"
+title = "Brave New World"
+description = "Aldous Huxley"
+date = 2026-07-09
+path = "currently-reading/brave-new-world"
 
 [extra]
-thumbnail = "assets/estrella-distante-roberto-bolanio.jpg"
-published_on = 2004
-isbn = "13: 978-0307476128"
+thumbnail = "assets/brave-new-world-aldous-huxley.jpeg"
+published_on = 1932
+isbn = "9780307356543"
 
 [taxonomies]
-tags = ["Latinoamérica"]
+tags = ["Science Fiction"]
 +++
 
 ## Why we chose it?
 
-One of the authors we have always wanted to read is Roberto Bolaño. During a visit to [City Lights Bookstore](https://www.citylights.com/) (San Francisco), one of Mia's favorite bookstores, we found a section dedicated to his work. We couldn't pass up the opportunity, so we chose Distant Star as the next book.
+Brave New World is a classic. Although We have read it before in Spanish, this is the type of book that we should read in English because the language is more powerful. Given the current political climate worldwide, it's a good time to read a book that explores the consequences of a society that is controlled by a government that engineers its citizens to develop an intelligence-based society.
 
 ## About the author
-Roberto Bolaño was born April 28, 1953, in Santiago, Chile. He was one of the leading South American literary figures in the 21st century.
-His book _Savage Detectives_ was published in 1998 and won the Rómulo Gallegos Prize (the Spanish-language equivalent of the Booker Prize). Unfortunately, his ouvre was not widely translated into other languages until 2014, when his work started to gain international recognition. Bolaño explored several forms of writing, including short stories, novels, and poetry. Influenced by his traumatic experience during the dictatorship of Augusto Pinochet, he addressed themes around exile, fascism, violence, and the search for truth. Roberto Bolaño died on July 15, 2003, in Barcelona, Spain.
+Aldous Huxley was born in 1894 in England. He was a writer and philosopher. Aldous Huxley was nominated for the Nobel Prize in Literature nine times, and he's probably best known for his book Brave New World.
+Considered one of the most important intellectuals of the 20th century, Aldous Huxley was closely associated with the Bloomsbury Group and a friend of Virginia Woolf. In his early life he taught French at Eton College, having George Orwell as one of his students. Having experimented with mescaline in the 1950s, Huxley became an advisor to early-1960s research work with psychedelic drugs at Harvard University. He also wrote about his experiences with mescaline in his book "The Doors of Perception". Aldous Huxley died in 1963 in Los Angeles, California.
