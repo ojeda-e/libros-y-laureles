@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+    <title>Libros y Laureles - Science Fiction</title>
+    <subtitle>Libros y Laureles</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://ojeda-e.github.io/libros-y-laureles/tags/science-fiction/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://ojeda-e.github.io/libros-y-laureles"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-05-18T00:00:00+00:00</updated>
+    <id>https://ojeda-e.github.io/libros-y-laureles/tags/science-fiction/atom.xml</id>
+    <entry xml:lang="es">
+        <title>Brave New World</title>
+        <published>2026-05-18T00:00:00+00:00</published>
+        <updated>2026-05-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ojeda-e.github.io/libros-y-laureles/leyendo-ahora/brave-new-world/"/>
+        <id>https://ojeda-e.github.io/libros-y-laureles/leyendo-ahora/brave-new-world/</id>
+        
+        <content type="html" xml:base="https://ojeda-e.github.io/libros-y-laureles/leyendo-ahora/brave-new-world/">&lt;h2 id=&quot;por-que-lo-elegimos&quot;&gt;Por qué lo elegimos?&lt;&#x2F;h2&gt;
+&lt;p&gt;Brave New World (traducido al español como &quot;Un Mundo Feliz&quot;) es un clásico. Aunque lo hemos leído antes en español, este es el tipo de libro que se debe leer en inglés porque el lenguaje es más poderoso. Dado el clima político actual a nivel mundial, es un buen momento para leer un libro que explora las consecuencias de una sociedad controlada por un gobierno que crea a sus ciudadanos para desarrollar una sociedad basada en la inteligencia.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;acerca-del-autor&quot;&gt;Acerca del autor&lt;&#x2F;h2&gt;
+&lt;p&gt;Aldous Huxley nació en 1894 en Inglaterra y fue un escritor y filósofo. Fue nominado para el Premio Nobel de Literatura nueve veces, y es probablemente mejor conocido por su libro &lt;strong&gt;Un Mundo Feliz&lt;&#x2F;strong&gt;. Considerado uno de los intelectuales más importantes del siglo XX, Aldous Huxley estuvo asociado con el Bloomsbury Group y fue amigo de Virginia Woolf. En su juventud enseñó francés en Eton College, teniendo a George Orwell como uno de sus estudiantes. Experimentó con mescalina en los 1950s, y se convirtió en asesor de trabajos de investigación con drogas psicodélicas en la Universidad de Harvard. También escribió sobre sus experiencias con mescalina en su libro &quot;The Doors of Perception&quot;. Aldous Huxley falleció en 1963 en Los Angeles, California.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Books and Laurels - Latinamerica</title>
+    <subtitle>Books and Laurels</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://ojeda-e.github.io/libros-y-laureles/en/tags/latinamerica/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://ojeda-e.github.io/libros-y-laureles"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-06-03T00:00:00+00:00</updated>
+    <id>https://ojeda-e.github.io/libros-y-laureles/en/tags/latinamerica/atom.xml</id>
+    <entry xml:lang="en">
+        <title>La Perra</title>
+        <published>2026-06-03T00:00:00+00:00</published>
+        <updated>2026-06-03T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ojeda-e.github.io/libros-y-laureles/en/books/la-perra/"/>
+        <id>https://ojeda-e.github.io/libros-y-laureles/en/books/la-perra/</id>
+        
+        <content type="html" xml:base="https://ojeda-e.github.io/libros-y-laureles/en/books/la-perra/">&lt;p&gt;The story takes place in the context of Colombian poverty in a Pacific coastal town. For decades, some of the most vulnerable populations in this country have lived in areas such as the one described in the book. Surviving is more important than being happy, or getting what they want. Sometimes it feels like no one questions why they are living like this, just try to do what they can with what they have. This setting is common in similar places around the world.&lt;&#x2F;p&gt;
+&lt;p&gt;In a way, this is a story of how our desires clash with our reality, where longing for a better situation could be a permanent state of mind. The book is a portrait of unequal societies, where chances to move into a better economic and personal situation are low and almost non-existent, for some. But, at the same time, it is a story about the struggle to accept our realities and stop controlling others, and this is where the readers might identify with the main character, because it could happen to anyone, anywhere.&lt;&#x2F;p&gt;
+&lt;p&gt;The clever writing style gives rhythm to the reading and lets the reader submerge into the story, the places and the situations without too much effort. We want Damaris to do better but we can just go along and hope for the best. Maybe that’s the way some people see our own struggles from afar. We don’t want to her to do anything crazy and when she does, we’re not sure if we should judge her or not. When I say &lt;em&gt;we&lt;&#x2F;em&gt;, I really mean me and hope others are of the same opinion.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;selected-fragment&quot;&gt;Selected fragment&lt;&#x2F;h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Damaris wanted to dry the puppy’s paws with a towel and rub her body with her hands to warm the little girl up before setting her back in the box, but she stopped herself since Luzmila kept staring at her with those evil eyes of hers.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&quot;You’re going to kill that animal, you keep touching it so much,&quot; she said.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Damaris was hurt by the comment, but she kept quiet. It wasn’t worth a fight. Then, wearing her disgusted face, Luzmila asked what the dog’s name was, and Damaris had to tell her: Chirli. They were first cousins and had been raised together since birth, so they knew everything about one another.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&quot;Chirli, like the beauty queen?&quot; Luzmila laughed. &quot;Isn’t that what you were going to name your daughter?&quot;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Damaris had been unable to have children. She and Rogelio got together when she was eighteen, and when she’d been with him for two years people started saying &quot;Where are the babies?&quot; and &quot;Sure taking your time.&quot;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h2 id=&quot;about-the-author&quot;&gt;About the author&lt;&#x2F;h2&gt;
+&lt;p&gt;Pilar Quintana was born in Cali, Colombia. The bitch is the first of her novels translated into English and 15 more languages. This novel was &quot;shortlisted for the Colombian Premio Nacional de Novela in 2018 and the National Book Award for Translated Literature in the US in October 2020, and it was announced the winner of the English Pen Award and the Premio de Biblioteca de Narrativa Colombiana in 2018.&quot;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>A Tale of the Dispossessed</title>
+        <published>2026-01-10T00:00:00+00:00</published>
+        <updated>2026-01-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://ojeda-e.github.io/libros-y-laureles/en/books/la-multitud-errante/"/>
+        <id>https://ojeda-e.github.io/libros-y-laureles/en/books/la-multitud-errante/</id>
+        
+        <content type="html" xml:base="https://ojeda-e.github.io/libros-y-laureles/en/books/la-multitud-errante/">&lt;p&gt;Pending translation.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
